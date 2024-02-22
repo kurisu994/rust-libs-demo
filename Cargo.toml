@@ -1,0 +1,21 @@
+[package]
+name = "rust-libs-demo"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+jni = { version = "0.21.1", default-features = false }
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = true
+opt-level = 'z'
+panic = 'abort'
+
+[unstable]
+build-std-features = ["panic_immediate_abort"]
+build-std = ["std","panic_abort"]
